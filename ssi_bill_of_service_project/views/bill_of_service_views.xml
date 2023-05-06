@@ -19,7 +19,7 @@
                             <field name="name" />
                             <field name="difficulty" />
                             <field name="num_of_parellel" />
-                            <field name="work_estimation" />
+                            <field name="work_estimation" widget="float_time" />
                         </tree>
                     </field>
                     <group name="task" colspan="4" col="2">

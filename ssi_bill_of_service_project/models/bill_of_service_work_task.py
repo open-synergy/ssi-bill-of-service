@@ -8,6 +8,7 @@ from odoo import api, fields, models
 class BillOfServiceTask(models.Model):
     _name = "bill_of_service.task"
     _description = "Bill Of Service Task"
+    _order = "sequence, bos_id, id"
 
     sequence = fields.Integer(
         string="Sequence",
