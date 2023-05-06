@@ -96,3 +96,14 @@ class BillOfServiceTask(models.Model):
     )
     def onchange_product_id(self):
         self.product_id = False
+
+    def _prepare_pricelist_data(self, bos_pricelist):
+        self.ensure_one()
+        return {
+            "bos_pricelist_id": bos_pricelist.id,
+            "name": self.name,
+            "product_id": self.product_id.id,
+            "uom_id": self.product_id.uom_id.id,
+            "uom_quantity": 1.0,
+            "pricelist_id": bos_pricelist.task_pricelist_id.id,
+        }

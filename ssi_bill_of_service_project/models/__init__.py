@@ -5,4 +5,6 @@
 from . import (
     bill_of_service,
     bill_of_service_work_task,
+    bill_of_service_pricelist,
+    bill_of_service_pricelist_task,
 )

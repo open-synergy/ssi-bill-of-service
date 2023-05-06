@@ -4,7 +4,7 @@
 
 {
     "name": "Bill of Service - Project Integration",
-    "version": "14.0.1.4.0",
+    "version": "14.0.2.0.0",
     "website": "https://simetri-sinergi.id",
     "author": "PT. Simetri Sinergi Indonesia, OpenSynergy Indonesia",
     "license": "LGPL-3",
@@ -12,10 +12,12 @@
     "depends": [
         "ssi_bill_of_service",
         "ssi_task_work_log",
+        "ssi_work_log_cost",
     ],
     "data": [
         "security/ir.model.access.csv",
         "views/bill_of_service_views.xml",
+        "views/bill_of_service_pricelist_views.xml",
     ],
     "demo": [],
     "images": [],
