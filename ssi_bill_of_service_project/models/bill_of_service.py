@@ -13,6 +13,7 @@ class BillOfService(models.Model):
         string="Tasks",
         comodel_name="bill_of_service.task",
         inverse_name="bos_id",
+        copy=True,
     )
     total_work_estimation = fields.Float(
         string="Total Work Estimation",
