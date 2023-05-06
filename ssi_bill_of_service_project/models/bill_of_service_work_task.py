@@ -36,6 +36,17 @@ class BillOfServiceTask(models.Model):
         related="type_id.category_id",
         store=True,
     )
+    allowed_product_ids = fields.Many2many(
+        string="Allowed Products",
+        comodel_name="product.product",
+        related="type_id.work_log_product_ids",
+        store=False,
+    )
+    product_id = fields.Many2one(
+        string="Product",
+        comodel_name="product.product",
+        required=True,
+    )
     difficulty = fields.Selection(
         string="Difficulty",
         index=True,
@@ -79,3 +90,9 @@ class BillOfServiceTask(models.Model):
         self.name = False
         if self.type_id:
             self.name = self.type_id.name
+
+    @api.onchange(
+        "type_id",
+    )
+    def onchange_product_id(self):
+        self.product_id = False

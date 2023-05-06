@@ -17,6 +17,15 @@
                             <field name="type_id" />
                             <field name="type_category_id" />
                             <field name="name" />
+                            <field
+                                    name="allowed_product_ids"
+                                    widget="many2many_tags"
+                                    invisible="1"
+                                />
+                            <field
+                                    name="product_id"
+                                    domain="[('id','in',allowed_product_ids)]"
+                                />
                             <field name="difficulty" />
                             <field name="num_of_parellel" />
                             <field name="work_estimation" widget="float_time" />
