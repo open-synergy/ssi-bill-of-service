@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bill_of_service_task_configurator,bill_of_service.task - configurator,model_bill_of_service_task,ssi_bill_of_service.bill_of_service_group,1,1,1,1
+access_bill_of_service_task_all,bill_of_service.task - all,model_bill_of_service_task,,1,0,0,0
