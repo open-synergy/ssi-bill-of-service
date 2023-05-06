@@ -87,9 +87,9 @@
 <menuitem
         id="bill_of_service_menu"
         name="Bill of Services"
-        parent="ssi_product.menu_product_configuration"
+        parent="menu_bos_root"
         groups="bill_of_service_group"
         action="bill_of_service_action"
-        sequence="102"
+        sequence="101"
     />
 </odoo>
