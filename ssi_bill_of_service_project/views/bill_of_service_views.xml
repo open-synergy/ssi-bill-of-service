@@ -30,4 +30,21 @@
         </data>
     </field>
 </record>
+
+<record id="bill_of_service_view_tree" model="ir.ui.view">
+    <field name="name">bill_of_service - Tree</field>
+    <field name="model">bill_of_service</field>
+    <field name="inherit_id" ref="ssi_bill_of_service.bill_of_service_view_tree" />
+    <field name="arch" type="xml">
+        <data>
+            <xpath expr="//field[@name='product_uom_id']" position="after">
+                <field
+                        name="total_work_estimation"
+                        widget="float_time"
+                        sum="Total Work Log Estimation"
+                    />
+            </xpath>
+        </data>
+    </field>
+</record>
 </odoo>
