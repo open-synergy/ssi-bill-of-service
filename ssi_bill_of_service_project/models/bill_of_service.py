@@ -28,5 +28,5 @@ class BillOfService(models.Model):
         for record in self:
             result = 0.0
             for task in record.task_ids:
-                result += task.work_estimation
+                result += task.total_work_estimation
             record.total_work_estimation = result

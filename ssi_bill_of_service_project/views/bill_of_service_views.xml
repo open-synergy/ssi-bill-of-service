@@ -27,8 +27,19 @@
                                     domain="[('id','in',allowed_product_ids)]"
                                 />
                             <field name="difficulty" />
-                            <field name="num_of_parellel" />
                             <field name="work_estimation" widget="float_time" />
+                            <field name="num_of_parellel" />
+                            <field
+                                    name="total_work_estimation"
+                                    widget="float_time"
+                                    sum="Total Work Estimation"
+                                />
+                            <button
+                                    name="action_recompute_work_estimation"
+                                    type="object"
+                                    help="Work Estimation"
+                                    icon="fa-cogs"
+                                />
                         </tree>
                     </field>
                     <group name="task" colspan="4" col="2">

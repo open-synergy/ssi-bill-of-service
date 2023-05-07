@@ -67,6 +67,21 @@ class BillOfServiceTask(models.Model):
     work_estimation = fields.Float(
         string="Work Estimation",
     )
+    total_work_estimation = fields.Float(
+        string="Total Work Estimation",
+        compute="_compute_total_work_estimation",
+        store=True,
+    )
+
+    @api.depends(
+        "num_of_parellel",
+        "work_estimation",
+    )
+    def _compute_total_work_estimation(self):
+        for record in self:
+            record.total_work_estimation = (
+                record.work_estimation * record.num_of_parellel
+            )
 
     @api.onchange(
         "type_id",
@@ -79,9 +94,7 @@ class BillOfServiceTask(models.Model):
             standard_work_estimation = self.type_id.work_estimation
             field_name = "work_estimation_offset_" + self.difficulty
             offset_work_estimation = getattr(self.type_id, field_name)
-            self.work_estimation = (
-                standard_work_estimation + offset_work_estimation
-            ) * self.num_of_parellel
+            self.work_estimation = standard_work_estimation + offset_work_estimation
 
     @api.onchange(
         "type_id",
@@ -97,6 +110,10 @@ class BillOfServiceTask(models.Model):
     def onchange_product_id(self):
         self.product_id = False
 
+    def action_recompute_work_estimation(self):
+        for record in self.sudo():
+            record.onchange_work_estimation()
+
     def _prepare_pricelist_data(self, bos_pricelist):
         self.ensure_one()
         return {
@@ -104,6 +121,6 @@ class BillOfServiceTask(models.Model):
             "name": self.name,
             "product_id": self.product_id.id,
             "uom_id": self.product_id.uom_id.id,
-            "uom_quantity": 1.0,
+            "uom_quantity": self.total_work_estimation,
             "pricelist_id": bos_pricelist.task_pricelist_id.id,
         }
