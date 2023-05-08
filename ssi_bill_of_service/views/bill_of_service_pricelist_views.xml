@@ -20,6 +20,8 @@
                 <field name="amount_good" optional="hide" />
                 <field name="amount_service" optional="hide" />
                 <field name="amount_total" />
+                <field name="margin" />
+                <field name="amount_after_margin" />
             </xpath>
         </data>
     </field>
@@ -70,6 +72,8 @@
             </xpath>
             <xpath expr="//group[@name='footer_left']" position="inside">
                 <field name="amount_total" />
+                <field name="margin" />
+                <field name="amount_after_margin" />
             </xpath>
         </data>
     </field>

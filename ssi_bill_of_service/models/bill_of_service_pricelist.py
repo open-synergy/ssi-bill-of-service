@@ -125,6 +125,17 @@ class BillOfServicePricelist(models.Model):
         readonly=True,
         ondelete="restrict",
     )
+    margin = fields.Float(
+        string="Margin",
+        required=True,
+        readonly=True,
+        default=100.00,
+        states={
+            "draft": [
+                ("readonly", False),
+            ],
+        },
+    )
     amount_good = fields.Monetary(
         string="Amount Good",
         compute="_compute_amount_good",
@@ -143,6 +154,13 @@ class BillOfServicePricelist(models.Model):
         store=True,
         currency_field="currency_id",
     )
+    amount_after_margin = fields.Monetary(
+        string="Amount After Margin",
+        compute="_compute_amount_total",
+        store=True,
+        currency_field="currency_id",
+    )
+
     state = fields.Selection(
         string="State",
         default="draft",
@@ -166,12 +184,16 @@ class BillOfServicePricelist(models.Model):
             result = 0.0
             record.amount_good = result
 
+    @api.depends(
+        "margin",
+    )
     def _compute_amount_total(self):
         for record in self:
             result = 0.0
             for field_name in self._get_amount_field():
                 result += getattr(record, field_name)
             record.amount_total = result
+            record.amount_after_margin = result * (record.margin / 100.00)
 
     @api.model
     def _get_amount_field(self):
@@ -218,7 +240,7 @@ class BillOfServicePricelist(models.Model):
         self.ensure_one()
         result = {
             "pricelist_id": self.pricelist_id.id,
-            "fixed_price": self.amount_total,
+            "fixed_price": self.amount_after_margin,
             "compute_price": "fixed",
         }
         if self.bos_id.product_id:
