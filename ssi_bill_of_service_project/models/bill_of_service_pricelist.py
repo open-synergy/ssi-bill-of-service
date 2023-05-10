@@ -68,6 +68,7 @@ class BillOfServicePricelist(models.Model):
     def _populate_task(self):
         self.ensure_one()
         Task = self.env["bill_of_service_pricelist_task"]
+        self.task_ids.unlink()
         for task in self.bos_id.task_ids:
             result = Task.create(task._prepare_pricelist_data(self))
             result.onchange_price_unit()
