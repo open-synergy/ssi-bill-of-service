@@ -245,7 +245,7 @@ class BillOfServicePricelist(models.Model):
     @ssi_decorator.post_done_action()
     def _create_update_pricelist_item(self):
         self.ensure_one()
-        if self.pricelist_item_id:
+        if not self.pricelist_item_id:
             self._create_pricelist_item()
         else:
             self.pricelist_item_id.write(self._prepare_pricelist_item())
