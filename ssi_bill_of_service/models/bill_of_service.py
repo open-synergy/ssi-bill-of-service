@@ -34,10 +34,25 @@ class BillOfService(models.Model):
         related="type_id.allowed_product_tmpl_ids",
         store=False,
     )
+    parent_id = fields.Many2one(
+        string="Parent BoS",
+        comodel_name="bill_of_service",
+    )
+    child_ids = fields.One2many(
+        string="Child BoS",
+        comodel_name="bill_of_service",
+        inverse_name="parent_id",
+    )
+    all_structure_ids = fields.Many2many(
+        string="All Bill of Service",
+        comodel_name="bill_of_service",
+        compute="_compute_all_structure_ids",
+        store=False,
+    )
     product_tmpl_id = fields.Many2one(
         string="Product Template",
         comodel_name="product.template",
-        required=True,
+        required=False,
         ondelete="restrict",
     )
     product_id = fields.Many2one(
@@ -56,3 +71,12 @@ class BillOfService(models.Model):
         required=True,
         ondelete="restrict",
     )
+
+    def _compute_all_structure_ids(self):
+        for record in self:
+            result = self.env["bill_of_service"]
+            parent = record.parent_id
+            while parent:
+                result += parent
+                parent = parent.parent_id
+            record.all_structure_ids = result + record

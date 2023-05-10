@@ -19,9 +19,11 @@
                 <field name="date_end" />
                 <field name="amount_good" optional="hide" />
                 <field name="amount_service" optional="hide" />
-                <field name="amount_total" />
+                <field name="amount_total" optional="hide" />
                 <field name="margin" />
-                <field name="amount_after_margin" />
+                <field name="amount_after_margin" optional="hide" />
+                <field name="price_round" />
+                <field name="amount_final" />
             </xpath>
         </data>
     </field>
@@ -74,6 +76,8 @@
                 <field name="amount_total" />
                 <field name="margin" />
                 <field name="amount_after_margin" />
+                <field name="price_round" />
+                <field name="amount_final" />
             </xpath>
         </data>
     </field>

@@ -2,7 +2,7 @@
 # Copyright 2023 PT. Simetri Sinergi Indonesia
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
-from odoo import api, fields, models
+from odoo import api, fields, models, tools
 
 from odoo.addons.ssi_decorator import ssi_decorator
 
@@ -32,8 +32,8 @@ class BillOfServicePricelist(models.Model):
     # Mixin duration attribute
     _date_start_readonly = True
     _date_end_readonly = True
-    _date_start_required = True
-    _date_end_required = True
+    _date_start_required = False
+    _date_end_required = False
     _date_start_states_list = ["draft"]
     _date_start_states_readonly = ["draft"]
     _date_end_states_list = ["draft"]
@@ -125,6 +125,17 @@ class BillOfServicePricelist(models.Model):
         readonly=True,
         ondelete="restrict",
     )
+    price_round = fields.Float(
+        string="Price Round",
+        required=True,
+        readonly=True,
+        default=0.0,
+        states={
+            "draft": [
+                ("readonly", False),
+            ],
+        },
+    )
     margin = fields.Float(
         string="Margin",
         required=True,
@@ -160,6 +171,12 @@ class BillOfServicePricelist(models.Model):
         store=True,
         currency_field="currency_id",
     )
+    amount_final = fields.Monetary(
+        string="Amount Final",
+        compute="_compute_amount_total",
+        store=True,
+        currency_field="currency_id",
+    )
 
     state = fields.Selection(
         string="State",
@@ -186,6 +203,7 @@ class BillOfServicePricelist(models.Model):
 
     @api.depends(
         "margin",
+        "price_round",
     )
     def _compute_amount_total(self):
         for record in self:
@@ -193,7 +211,13 @@ class BillOfServicePricelist(models.Model):
             for field_name in self._get_amount_field():
                 result += getattr(record, field_name)
             record.amount_total = result
-            record.amount_after_margin = result * (record.margin / 100.00)
+            record.amount_after_margin = record.amount_final = result * (
+                (record.margin + 100.00) / 100.00
+            )
+            if record.price_round:
+                record.amount_final = tools.float_round(
+                    record.amount_after_margin, precision_rounding=record.price_round
+                )
 
     @api.model
     def _get_amount_field(self):
@@ -240,7 +264,7 @@ class BillOfServicePricelist(models.Model):
         self.ensure_one()
         result = {
             "pricelist_id": self.pricelist_id.id,
-            "fixed_price": self.amount_after_margin,
+            "fixed_price": self.amount_final,
             "compute_price": "fixed",
         }
         if self.bos_id.product_id:
