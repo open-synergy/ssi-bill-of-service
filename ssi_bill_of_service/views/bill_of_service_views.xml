@@ -70,6 +70,9 @@
                 </div>
             </xpath>
             <xpath expr="//page[1]" position="before">
+                <page name="component" string="Components">
+                    <field name="component_ids" />
+                </page>
                 <page name="product" string="Products">
                 </page>
                 <page name="service" string="Services">
