@@ -87,7 +87,3 @@ class BillOfService(models.Model):
                 result += parent
                 parent = parent.parent_id
             record.all_structure_ids = result + record
-
-            if record.component_ids:
-                for component in record.component_ids:
-                    record.all_structure_ids += component.all_structure_ids
