@@ -12,6 +12,9 @@
         <data>
             <xpath expr="//field[@name='user_id']" position="before">
                 <field name="bos_id" />
+                <field name="product_tmpl_id" />
+                <field name="product_id" />
+                <field name="product_category_id" />
                 <field name="currency_id" />
                 <field name="pricelist_id" />
                 <field name="date" />
@@ -38,7 +41,41 @@
         />
     <field name="mode">primary</field>
     <field name="arch" type="xml">
-        <data />
+        <data>
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="bos_id" />
+                <field name="product_tmpl_id" />
+                <field name="product_id" />
+                <field name="product_category_id" />
+                <field name="currency_id" />
+                <field name="pricelist_id" />
+                <filter
+                        name="dom_product_template"
+                        string="Product Template"
+                        domain="[('product_tmpl_id','!=',False),('product_id','=',False)]"
+                    />
+                <filter
+                        name="dom_product"
+                        string="Product"
+                        domain="[('product_tmpl_id','!=',False),('product_id','!=',False)]"
+                    />
+                <filter
+                        name="grp_product_tmpl"
+                        string="Product Template"
+                        context="{'group_by':'product_tmpl_id'}"
+                    />
+                <filter
+                        name="grp_product"
+                        string="Product"
+                        context="{'group_by':'product_id'}"
+                    />
+                <filter
+                        name="grp_product_category"
+                        string="Product Category"
+                        context="{'group_by':'product_category_id'}"
+                    />
+            </xpath>
+        </data>
     </field>
 </record>
 
@@ -50,7 +87,10 @@
     <field name="arch" type="xml">
         <data>
             <xpath expr="//field[@name='user_id']" position="after">
-                <field name="bos_id" />
+                <field name="bos_id" domain="[('product_tmpl_id','!=',False)]" />
+                <field name="product_tmpl_id" />
+                <field name="product_id" />
+                <field name="product_category_id" />
                 <field name="currency_id" />
                 <field name="pricelist_id" domain="[('currency_id','=',currency_id)]" />
                 <field name="pricelist_item_id" />

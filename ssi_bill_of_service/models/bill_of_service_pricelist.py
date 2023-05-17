@@ -95,6 +95,24 @@ class BillOfServicePricelist(models.Model):
             ],
         },
     )
+    product_tmpl_id = fields.Many2one(
+        string="Product Template",
+        comodel_name="product.template",
+        related="bos_id.product_tmpl_id",
+        store=True,
+    )
+    product_id = fields.Many2one(
+        string="Product",
+        comodel_name="product.product",
+        related="bos_id.product_id",
+        store=True,
+    )
+    product_category_id = fields.Many2one(
+        string="Product Category",
+        comodel_name="product.category",
+        related="bos_id.product_category_id",
+        store=True,
+    )
     currency_id = fields.Many2one(
         string="Currency",
         comodel_name="res.currency",

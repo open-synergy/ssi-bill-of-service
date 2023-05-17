@@ -67,6 +67,12 @@ class BillOfService(models.Model):
         comodel_name="product.product",
         ondelete="restrict",
     )
+    product_category_id = fields.Many2one(
+        string="Product Category",
+        comodel_name="product.category",
+        related="product_tmpl_id.categ_id",
+        store=True,
+    )
     product_qty = fields.Float(
         string="Product Qty",
         default=1.0,
