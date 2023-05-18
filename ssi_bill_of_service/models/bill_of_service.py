@@ -92,4 +92,4 @@ class BillOfService(models.Model):
             while parent:
                 result += parent
                 parent = parent.parent_id
-            record.all_structure_ids = result + record
+            record.all_structure_ids = result
