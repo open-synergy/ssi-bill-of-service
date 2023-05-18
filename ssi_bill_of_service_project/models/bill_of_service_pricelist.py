@@ -69,7 +69,25 @@ class BillOfServicePricelist(models.Model):
         self.ensure_one()
         Task = self.env["bill_of_service_pricelist_task"]
         self.task_ids.unlink()
-        for task in self.bos_id.all_task_ids:
+        for task in self.bos_id.task_ids:
             result = Task.create(task._prepare_pricelist_data(self))
             result.onchange_price_unit()
             result._compute_price()
+
+        for bos in self.bos_id.all_structure_ids:
+            for task in bos.task_ids:
+                result = Task.create(task._prepare_pricelist_data(self))
+                result.onchange_price_unit()
+                result._compute_price()
+
+        self._process_component_task(self)
+
+    def _process_component_task(self, bos):
+        Task = self.env["bill_of_service_pricelist_task"]
+        for component in bos.component_ids:
+            for task in component.task_ids:
+                result = Task.create(task._prepare_pricelist_data(self))
+                result.onchange_price_unit()
+                result._compute_price()
+            if component.component_ids:
+                self._process_component_task(component)
