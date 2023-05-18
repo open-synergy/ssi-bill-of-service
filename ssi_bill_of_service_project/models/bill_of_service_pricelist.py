@@ -80,7 +80,7 @@ class BillOfServicePricelist(models.Model):
                 result.onchange_price_unit()
                 result._compute_price()
 
-        self._process_component_task(self)
+        self._process_component_task(self.bos_id)
 
     def _process_component_task(self, bos):
         Task = self.env["bill_of_service_pricelist_task"]
