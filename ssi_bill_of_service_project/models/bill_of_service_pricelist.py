@@ -89,5 +89,10 @@ class BillOfServicePricelist(models.Model):
                 result = Task.create(task._prepare_pricelist_data(self))
                 result.onchange_price_unit()
                 result._compute_price()
+            for bos1 in component.all_structure_ids:
+                for task in bos1.task_ids:
+                    result = Task.create(task._prepare_pricelist_data(self))
+                    result.onchange_price_unit()
+                    result._compute_price()
             if component.component_ids:
                 self._process_component_task(component)

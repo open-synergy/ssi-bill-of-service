@@ -4,7 +4,7 @@
 
 {
     "name": "Bill of Service - Project Integration",
-    "version": "14.0.2.2.2",
+    "version": "14.0.2.2.3",
     "website": "https://simetri-sinergi.id",
     "author": "PT. Simetri Sinergi Indonesia, OpenSynergy Indonesia",
     "license": "LGPL-3",
