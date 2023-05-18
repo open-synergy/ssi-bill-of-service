@@ -15,11 +15,27 @@ class BillOfService(models.Model):
         inverse_name="bos_id",
         copy=True,
     )
+    all_task_ids = fields.Many2many(
+        string="All Tasks",
+        comodel_name="bill_of_service.task",
+        compute="_compute_all_task_ids",
+        store=False,
+    )
     total_work_estimation = fields.Float(
         string="Total Work Estimation",
         compute="_compute_total_work_estimation",
         store=True,
     )
+
+    def _compute_all_task_ids(self):
+        for record in self:
+            result = self.task_ids
+            for parent in record.all_structure_ids:
+                result += parent.all_task_ids
+
+            for component in record.component_ids:
+                result += component.all_task_ids
+            record.all_task_ids = result
 
     @api.depends(
         "task_ids.work_estimation",

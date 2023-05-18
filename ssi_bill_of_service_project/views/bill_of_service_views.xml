@@ -45,6 +45,31 @@
                     <group name="task" colspan="4" col="2">
                         <field name="total_work_estimation" widget="float_time" />
                     </group>
+                    <field name="all_task_ids">
+                        <tree>
+                            <field name="sequence" widget="handle" />
+                            <field name="type_id" />
+                            <field name="type_category_id" />
+                            <field name="name" />
+                            <field
+                                    name="allowed_product_ids"
+                                    widget="many2many_tags"
+                                    invisible="1"
+                                />
+                            <field
+                                    name="product_id"
+                                    domain="[('id','in',allowed_product_ids)]"
+                                />
+                            <field name="difficulty" />
+                            <field name="work_estimation" widget="float_time" />
+                            <field name="num_of_parellel" />
+                            <field
+                                    name="total_work_estimation"
+                                    widget="float_time"
+                                    sum="Total Work Estimation"
+                                />
+                        </tree>
+                    </field>
                 </page>
             </xpath>
         </data>
