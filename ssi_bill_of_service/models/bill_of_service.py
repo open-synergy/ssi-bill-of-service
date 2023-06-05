@@ -56,6 +56,12 @@ class BillOfService(models.Model):
         column1="bos_id",
         column2="component_id",
     )
+    all_component_ids = fields.Many2many(
+        string="All Component Bill of Service",
+        comodel_name="bill_of_service",
+        compute="_compute_all_component",
+        store=False,
+    )
     product_tmpl_id = fields.Many2one(
         string="Product Template",
         comodel_name="product.template",
@@ -93,3 +99,17 @@ class BillOfService(models.Model):
                 result += parent
                 parent = parent.parent_id
             record.all_structure_ids = result
+
+    def _compute_all_component(self):
+        for record in self:
+            result = record._get_components()
+            record.all_component_ids = result
+
+    def _get_components(self):
+        self.ensure_one()
+        result = self
+        if self.component_ids:
+            result += self.component_ids
+            for component in self.component_ids:
+                result += component._get_components()
+        return result

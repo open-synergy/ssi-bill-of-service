@@ -116,6 +116,7 @@
             <xpath expr="//page[1]" position="before">
                 <page name="component" string="Components">
                     <field name="component_ids" />
+                    <field name="all_component_ids" />
                 </page>
                 <page name="product" string="Products">
                 </page>

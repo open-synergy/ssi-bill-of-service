@@ -6,4 +6,5 @@ from . import (
     bill_of_service,
     bill_of_service_type,
     bill_of_service_pricelist,
+    product_product,
 )
