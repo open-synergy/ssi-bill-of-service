@@ -16,3 +16,8 @@ class ProductProduct(models.Model):
         comodel_name="bill_of_service",
         ondelete="restrict",
     )
+    bos_ids = fields.One2many(
+        string="Bill of Services",
+        comodel_name="bill_of_service",
+        inverse_name="product_id",
+    )
