@@ -14,7 +14,12 @@ ssi-bill-of-service
 
 [//]: # (addons)
 
-This part will be replaced when running the oca-gen-addons-table script from OCA/maintainer-tools.
+Available addons
+----------------
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[ssi_bill_of_service](ssi_bill_of_service/) | 14.0.2.8.0 |  | Bill of Service
+[ssi_bill_of_service_project](ssi_bill_of_service_project/) | 14.0.2.2.3 |  | Bill of Service - Project Integration
 
 [//]: # (end addons)
 
