@@ -10,6 +10,7 @@ setuptools.setup(
     install_requires=[
         'odoo14-addon-ssi_bill_of_service',
         'odoo14-addon-ssi_bill_of_service_project',
+        'odoo14-addon-ssi_bill_of_service_work_log',
     ],
     classifiers=[
         'Programming Language :: Python',
