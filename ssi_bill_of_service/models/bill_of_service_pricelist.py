@@ -3,6 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import api, fields, models, tools
+from odoo.tools.safe_eval import safe_eval
 
 from odoo.addons.ssi_decorator import ssi_decorator
 
@@ -15,6 +16,7 @@ class BillOfServicePricelist(models.Model):
         "mixin.transaction_done",
         "mixin.transaction_cancel",
         "mixin.date_duration",
+        "mixin.localdict",
     ]
 
     # Multiple Approval Attribute
@@ -183,6 +185,12 @@ class BillOfServicePricelist(models.Model):
         store=True,
         currency_field="currency_id",
     )
+    amount_total_after_formula = fields.Monetary(
+        string="Amount Total After Formula",
+        compute="_compute_amount_total",
+        store=True,
+        currency_field="currency_id",
+    )
     amount_after_margin = fields.Monetary(
         string="Amount After Margin",
         compute="_compute_amount_total",
@@ -195,7 +203,17 @@ class BillOfServicePricelist(models.Model):
         store=True,
         currency_field="currency_id",
     )
-
+    python_code = fields.Text(
+        string="Special Formula",
+        default="result = document.amount_total",
+        required=True,
+        readonly=True,
+        states={
+            "draft": [
+                ("readonly", False),
+            ],
+        },
+    )
     state = fields.Selection(
         string="State",
         default="draft",
@@ -222,20 +240,41 @@ class BillOfServicePricelist(models.Model):
     @api.depends(
         "margin",
         "price_round",
+        "python_code",
+        "amount_total",
     )
     def _compute_amount_total(self):
         for record in self:
-            result = 0.0
+            amount_total = (
+                amount_total_after_formula
+            ) = amount_after_margin = amount_final = 0.0
             for field_name in self._get_amount_field():
-                result += getattr(record, field_name)
-            record.amount_total = result
-            record.amount_after_margin = record.amount_final = result * (
+                amount_total += getattr(record, field_name)
+
+            localdict = self._get_default_localdict()
+            try:
+                safe_eval(
+                    self.python_code,
+                    localdict,
+                    mode="exec",
+                    nocopy=True,
+                )
+                amount_total_after_formula = localdict["result"]
+            except Exception:
+                amount_total_after_formula = amount_total
+
+            amount_after_margin = record.amount_final = amount_total_after_formula * (
                 (record.margin + 100.00) / 100.00
             )
             if record.price_round:
-                record.amount_final = tools.float_round(
-                    record.amount_after_margin, precision_rounding=record.price_round
+                amount_final = tools.float_round(
+                    amount_after_margin, precision_rounding=record.price_round
                 )
+
+            record.amount_total = amount_total
+            record.amount_total_after_formula = amount_total_after_formula
+            record.amount_after_margin = amount_after_margin
+            record.amount_final = amount_final
 
     @api.model
     def _get_amount_field(self):
