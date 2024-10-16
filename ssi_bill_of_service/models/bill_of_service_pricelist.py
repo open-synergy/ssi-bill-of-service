@@ -251,7 +251,7 @@ class BillOfServicePricelist(models.Model):
             for field_name in self._get_amount_field():
                 amount_total += getattr(record, field_name)
 
-            localdict = self._get_default_localdict()
+            localdict = record._get_default_localdict()
             try:
                 safe_eval(
                     record.python_code,
