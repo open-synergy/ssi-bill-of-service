@@ -254,7 +254,7 @@ class BillOfServicePricelist(models.Model):
             localdict = self._get_default_localdict()
             try:
                 safe_eval(
-                    self.python_code,
+                    record.python_code,
                     localdict,
                     mode="exec",
                     nocopy=True,
