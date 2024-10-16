@@ -14,6 +14,7 @@
         "ssi_transaction_confirm_mixin",
         "ssi_transaction_done_mixin",
         "ssi_transaction_cancel_mixin",
+        "ssi_localdict_mixin",
     ],
     "data": [
         "security/ir_module_category_data.xml",

@@ -23,6 +23,7 @@
                 <field name="amount_good" optional="hide" />
                 <field name="amount_service" optional="hide" />
                 <field name="amount_total" optional="hide" />
+                <field name="amount_total_after_formula" optional="hide" />
                 <field name="margin" />
                 <field name="amount_after_margin" optional="hide" />
                 <field name="price_round" />
@@ -111,9 +112,13 @@
                         <field name="amount_service" />
                     </group>
                 </page>
+                <page name="formula" string="Special Formula">
+                    <field name="python_code" widget="ace" />
+                </page>
             </xpath>
             <xpath expr="//group[@name='footer_left']" position="inside">
                 <field name="amount_total" />
+                <field name="amount_total_after_formula" />
                 <field name="margin" />
                 <field name="amount_after_margin" />
                 <field name="price_round" />
