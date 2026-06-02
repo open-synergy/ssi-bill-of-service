@@ -1,0 +1,113 @@
+scenarios:
+  - name: "BoS Project - Create BoS With Tasks"
+    steps:
+      - step: "Setup - create BoS type"
+        action: "create"
+        model: "bill_of_service_type"
+        save_as: "bos_type"
+        values:
+          name: "Project BoS Type"
+          code: "PROJBOST"
+      - step: "Get UoM Unit"
+        action: "ref"
+        xml_id: "uom.product_uom_unit"
+        save_as: "uom_unit"
+      - step: "Setup - create task type"
+        action: "create"
+        model: "task.type"
+        save_as: "task_type"
+        values:
+          name: "Test Task Type BoS"
+          code: "TTBOS"
+      - step: "Setup - create work log product"
+        action: "create"
+        model: "product.template"
+        save_as: "work_product_tmpl"
+        values:
+          name: "Work Log Product BoS"
+          type: "service"
+      - step: "Get product variant"
+        action: "search"
+        model: "product.product"
+        domain:
+          - ["product_tmpl_id", "=", "EVAL: registry['work_product_tmpl'].id"]
+        save_as: "work_product"
+        limit: 1
+      - step: "Create bill of service with tasks"
+        action: "create"
+        model: "bill_of_service"
+        save_as: "bos"
+        values:
+          name: "BoS With Tasks"
+          code: "BOSWT001"
+          type_id: "EVAL: registry['bos_type'].id"
+          product_qty: 1.0
+          product_uom_id: "EVAL: registry['uom_unit'].id"
+          task_ids:
+            - - 0
+              - 0
+              - name: "Task 1"
+                type_id: "EVAL: registry['task_type'].id"
+                product_id: "EVAL: registry['work_product'].id"
+                difficulty: "0"
+                num_of_parellel: 1
+                work_estimation: 8.0
+                sequence: 10
+      - step: "Assert BoS has tasks"
+        action: "assert"
+        target: "bos"
+        asserts:
+          task_ids:
+            type: "o2m"
+            check: "count"
+            expected_count: 1
+          total_work_estimation:
+            type: "value"
+            expected: 8.0
+
+  - name: "BoS Project - All Task IDs computed from parent and components"
+    steps:
+      - step: "Setup - create BoS type"
+        action: "create"
+        model: "bill_of_service_type"
+        save_as: "bos_type"
+        values:
+          name: "Composite BoS Type"
+          code: "COMPBOSTT"
+      - step: "Get UoM Unit"
+        action: "ref"
+        xml_id: "uom.product_uom_unit"
+        save_as: "uom_unit"
+      - step: "Create simple parent bill of service"
+        action: "create"
+        model: "bill_of_service"
+        save_as: "parent_bos"
+        values:
+          name: "Parent BoS Project"
+          code: "PBOSP001"
+          type_id: "EVAL: registry['bos_type'].id"
+          product_qty: 1.0
+          product_uom_id: "EVAL: registry['uom_unit'].id"
+      - step: "Create child bill of service"
+        action: "create"
+        model: "bill_of_service"
+        save_as: "child_bos"
+        values:
+          name: "Child BoS Project"
+          code: "CBOSP001"
+          type_id: "EVAL: registry['bos_type'].id"
+          product_qty: 1.0
+          product_uom_id: "EVAL: registry['uom_unit'].id"
+          parent_id: "EVAL: registry['parent_bos'].id"
+      - step: "Invalidate cache to recompute all_structure_ids"
+        action: "call"
+        target: "child_bos"
+        method: "invalidate_cache"
+      - step: "Assert child all_structure_ids contains parent"
+        action: "assert"
+        target: "child_bos"
+        asserts:
+          all_structure_ids:
+            type: "o2m"
+            check: "count"
+            expected_count: 1

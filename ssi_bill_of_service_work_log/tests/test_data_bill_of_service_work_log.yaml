@@ -1,0 +1,100 @@
+scenarios:
+  - name: "BoS Work Log - Create BoS and Check Work Log Mixin"
+    steps:
+      - step: "Setup - create BoS type"
+        action: "create"
+        model: "bill_of_service_type"
+        save_as: "bos_type"
+        values:
+          name: "Work Log BoS Type"
+          code: "WLBOST"
+      - step: "Get UoM Unit"
+        action: "ref"
+        xml_id: "uom.product_uom_unit"
+        save_as: "uom_unit"
+      - step: "Create bill of service"
+        action: "create"
+        model: "bill_of_service"
+        save_as: "bos"
+        values:
+          name: "BoS With Work Log"
+          code: "BOSWL001"
+          type_id: "EVAL: registry['bos_type'].id"
+          product_qty: 1.0
+          product_uom_id: "EVAL: registry['uom_unit'].id"
+      - step: "Assert BoS created with work log mixin"
+        action: "assert"
+        target: "bos"
+        asserts:
+          id:
+            type: "value"
+            operator: "is_truthy"
+          name:
+            type: "value"
+            expected: "BoS With Work Log"
+
+  - name: "BoS Work Log - Create Pricelist with Task Pricelist"
+    steps:
+      - step: "Setup - create BoS type"
+        action: "create"
+        model: "bill_of_service_type"
+        save_as: "bos_type"
+        values:
+          name: "WL Pricelist BoS Type"
+          code: "WLPLBOST"
+      - step: "Get UoM Unit"
+        action: "ref"
+        xml_id: "uom.product_uom_unit"
+        save_as: "uom_unit"
+      - step: "Create bill of service"
+        action: "create"
+        model: "bill_of_service"
+        save_as: "bos"
+        values:
+          name: "BoS For WL Pricelist"
+          code: "BOSWLPL001"
+          type_id: "EVAL: registry['bos_type'].id"
+          product_qty: 1.0
+          product_uom_id: "EVAL: registry['uom_unit'].id"
+      - step: "Get IDR currency"
+        action: "ref"
+        xml_id: "base.IDR"
+        save_as: "currency"
+      - step: "Setup - create main pricelist"
+        action: "create"
+        model: "product.pricelist"
+        save_as: "pricelist"
+        values:
+          name: "WL Main Pricelist BoS"
+          currency_id: "EVAL: registry['currency'].id"
+      - step: "Setup - create task pricelist"
+        action: "create"
+        model: "product.pricelist"
+        save_as: "task_pricelist"
+        values:
+          name: "WL Task Pricelist BoS"
+          currency_id: "EVAL: registry['currency'].id"
+      - step: "Create pricelist record"
+        action: "create"
+        model: "bill_of_service_pricelist"
+        save_as: "pricelist_record"
+        as_user: "base.user_admin"
+        values:
+          date: 2024-01-01
+          bos_id: "EVAL: registry['bos'].id"
+          currency_id: "EVAL: registry['currency'].id"
+          pricelist_id: "EVAL: registry['pricelist'].id"
+          task_pricelist_id: "EVAL: registry['task_pricelist'].id"
+          margin: 0.0
+          price_round: 0.0
+          python_code: "result = document.amount_total"
+      - step: "Assert pricelist record created"
+        action: "assert"
+        target: "pricelist_record"
+        asserts:
+          id:
+            type: "value"
+            operator: "is_truthy"
+          state:
+            type: "value"
+            expected: "draft"

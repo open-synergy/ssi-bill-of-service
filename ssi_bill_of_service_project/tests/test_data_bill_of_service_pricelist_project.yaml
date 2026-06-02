@@ -1,0 +1,181 @@
+scenarios:
+  - name: "BoS Pricelist Project - Full Workflow: draft to done"
+    steps:
+      - step: "Setup - create BoS type"
+        action: "create"
+        model: "bill_of_service_type"
+        save_as: "bos_type"
+        values:
+          name: "Project Pricelist BoS Type"
+          code: "PROJPLBOST"
+      - step: "Get UoM Unit"
+        action: "ref"
+        xml_id: "uom.product_uom_unit"
+        save_as: "uom_unit"
+      - step: "Setup - create product template"
+        action: "create"
+        model: "product.template"
+        save_as: "product_tmpl"
+        values:
+          name: "BoS Project Pricelist Product"
+          type: "service"
+      - step: "Setup - create bill of service"
+        action: "create"
+        model: "bill_of_service"
+        save_as: "bos"
+        values:
+          name: "BoS For Project Pricelist"
+          code: "BOSFPROJPL"
+          type_id: "EVAL: registry['bos_type'].id"
+          product_qty: 1.0
+          product_uom_id: "EVAL: registry['uom_unit'].id"
+          product_tmpl_id: "EVAL: registry['product_tmpl'].id"
+      - step: "Get IDR currency"
+        action: "ref"
+        xml_id: "base.IDR"
+        save_as: "currency"
+      - step: "Setup - create main pricelist"
+        action: "create"
+        model: "product.pricelist"
+        save_as: "pricelist"
+        values:
+          name: "Project Main Pricelist BoS"
+          currency_id: "EVAL: registry['currency'].id"
+      - step: "Setup - create task pricelist"
+        action: "create"
+        model: "product.pricelist"
+        save_as: "task_pricelist"
+        values:
+          name: "Project Task Pricelist BoS"
+          currency_id: "EVAL: registry['currency'].id"
+      - step: "Create pricelist record"
+        action: "create"
+        model: "bill_of_service_pricelist"
+        save_as: "pricelist_record"
+        as_user: "base.user_admin"
+        values:
+          date: 2024-01-01
+          bos_id: "EVAL: registry['bos'].id"
+          currency_id: "EVAL: registry['currency'].id"
+          pricelist_id: "EVAL: registry['pricelist'].id"
+          task_pricelist_id: "EVAL: registry['task_pricelist'].id"
+          margin: 0.0
+          price_round: 0.0
+          python_code: "result = document.amount_total"
+      - step: "Assert pricelist record created in draft"
+        action: "assert"
+        target: "pricelist_record"
+        asserts:
+          state:
+            type: "value"
+            expected: "draft"
+          amount_total:
+            type: "value"
+            expected: 0.0
+      - step: "Confirm pricelist record"
+        action: "call"
+        target: "pricelist_record"
+        method: "action_confirm"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "confirm"
+      - step: "Invalidate cache after confirm"
+        action: "call"
+        target: "pricelist_record"
+        method: "invalidate_cache"
+      - step: "Approve pricelist record"
+        action: "call"
+        target: "pricelist_record"
+        method: "action_approve_approval"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "done"
+      - step: "Invalidate cache after done"
+        action: "call"
+        target: "pricelist_record"
+        method: "invalidate_cache"
+      - step: "Assert pricelist item created"
+        action: "assert"
+        target: "pricelist_record"
+        asserts:
+          pricelist_item_id:
+            type: "value"
+            operator: "is_truthy"
+
+  - name: "BoS Pricelist Project - Cancel Flow"
+    steps:
+      - step: "Setup - create BoS type"
+        action: "create"
+        model: "bill_of_service_type"
+        save_as: "bos_type"
+        values:
+          name: "Cancel Proj BoS Type"
+          code: "CANCELPROJBOST"
+      - step: "Get UoM Unit"
+        action: "ref"
+        xml_id: "uom.product_uom_unit"
+        save_as: "uom_unit"
+      - step: "Setup - create bill of service"
+        action: "create"
+        model: "bill_of_service"
+        save_as: "bos"
+        values:
+          name: "BoS For Cancel Project"
+          code: "BOSCANCELPROJ"
+          type_id: "EVAL: registry['bos_type'].id"
+          product_qty: 1.0
+          product_uom_id: "EVAL: registry['uom_unit'].id"
+      - step: "Get IDR currency"
+        action: "ref"
+        xml_id: "base.IDR"
+        save_as: "currency"
+      - step: "Setup - create pricelist"
+        action: "create"
+        model: "product.pricelist"
+        save_as: "pricelist"
+        values:
+          name: "Cancel Proj Pricelist BoS"
+          currency_id: "EVAL: registry['currency'].id"
+      - step: "Setup - create task pricelist"
+        action: "create"
+        model: "product.pricelist"
+        save_as: "task_pricelist"
+        values:
+          name: "Cancel Proj Task Pricelist BoS"
+          currency_id: "EVAL: registry['currency'].id"
+      - step: "Create pricelist record"
+        action: "create"
+        model: "bill_of_service_pricelist"
+        save_as: "pricelist_record"
+        as_user: "base.user_admin"
+        values:
+          date: 2024-01-01
+          bos_id: "EVAL: registry['bos'].id"
+          currency_id: "EVAL: registry['currency'].id"
+          pricelist_id: "EVAL: registry['pricelist'].id"
+          task_pricelist_id: "EVAL: registry['task_pricelist'].id"
+          margin: 0.0
+          price_round: 0.0
+          python_code: "result = document.amount_total"
+      - step: "Confirm pricelist record"
+        action: "call"
+        target: "pricelist_record"
+        method: "action_confirm"
+        as_user: "base.user_admin"
+      - step: "Invalidate cache after confirm"
+        action: "call"
+        target: "pricelist_record"
+        method: "invalidate_cache"
+      - step: "Cancel pricelist record"
+        action: "call"
+        target: "pricelist_record"
+        method: "action_cancel"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "cancel"

@@ -1,0 +1,95 @@
+scenarios:
+  - name: "Bill of Service Type - Create"
+    steps:
+      - step: "Create bill of service type"
+        action: "create"
+        model: "bill_of_service_type"
+        save_as: "bos_type"
+        values:
+          name: "Test BoS Type"
+          code: "TBOST"
+      - step: "Assert type created"
+        action: "assert"
+        target: "bos_type"
+        asserts:
+          id:
+            type: "value"
+            operator: "is_truthy"
+          name:
+            type: "value"
+            expected: "Test BoS Type"
+          code:
+            type: "value"
+            expected: "TBOST"
+          active:
+            type: "value"
+            expected: true
+
+  - name: "Bill of Service Type - Edit"
+    steps:
+      - step: "Create bill of service type"
+        action: "create"
+        model: "bill_of_service_type"
+        save_as: "bos_type"
+        values:
+          name: "Type To Edit"
+          code: "TTE001"
+      - step: "Write new name"
+        action: "write"
+        target: "bos_type"
+        values:
+          name: "Updated BoS Type"
+      - step: "Assert name updated"
+        action: "assert"
+        target: "bos_type"
+        asserts:
+          name:
+            type: "value"
+            expected: "Updated BoS Type"
+
+  - name: "Bill of Service Type - Delete"
+    steps:
+      - step: "Create bill of service type"
+        action: "create"
+        model: "bill_of_service_type"
+        save_as: "bos_type"
+        values:
+          name: "Type To Delete"
+          code: "TTD001"
+      - step: "Delete type"
+        action: "call"
+        target: "bos_type"
+        method: "unlink"
+      - step: "Verify deleted"
+        action: "search"
+        model: "bill_of_service_type"
+        domain:
+          - ["code", "=", "TTD001"]
+        save_as: "result"
+        expect_count: 0
+
+  - name: "Bill of Service Type - With Allowed Product Categories"
+    steps:
+      - step: "Create product category"
+        action: "create"
+        model: "product.category"
+        save_as: "product_category"
+        values:
+          name: "Test Category BoS"
+      - step: "Create bill of service type with allowed categories"
+        action: "create"
+        model: "bill_of_service_type"
+        save_as: "bos_type"
+        values:
+          name: "Type With Category"
+          code: "TWC001"
+          allowed_product_category_ids:
+            - "EVAL: registry['product_category'].id"
+      - step: "Assert allowed categories set"
+        action: "assert"
+        target: "bos_type"
+        asserts:
+          allowed_product_category_ids:
+            type: "o2m"
+            check: "count"
+            expected_count: 1
