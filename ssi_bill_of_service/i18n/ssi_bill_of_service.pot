@@ -1,0 +1,929 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ssi_bill_of_service
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__name
+msgid "# Document"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model_terms:ir.ui.view,arch_db:ssi_bill_of_service.bill_of_service_view_search
+msgid "Abstract"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__message_needaction
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__message_needaction
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__active
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__active
+msgid "Active"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__active_approval_ids
+msgid "Active Approvals"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__active_approver_partner_ids
+msgid "Active Partners"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__active_approver_user_ids
+msgid "Active Users"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__activity_ids
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__activity_ids
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__activity_exception_decoration
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__activity_exception_decoration
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__activity_state
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__activity_state
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__activity_type_icon
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__activity_type_icon
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:res.groups,name:ssi_bill_of_service.bill_of_service_pricelist_all_group
+msgid "All"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__all_structure_ids
+msgid "All Bill of Service"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__all_component_ids
+msgid "All Component Bill of Service"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model_terms:ir.ui.view,arch_db:ssi_bill_of_service.bill_of_service_view_form
+msgid "All Structure"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__allowed_policy_template_ids
+msgid "Allowed Policy Templates"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__allowed_product_category_ids
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__allowed_product_category_ids
+msgid "Allowed Product Categories"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__allowed_product_tmpl_ids
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__allowed_product_tmpl_ids
+msgid "Allowed Product Templates"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__amount_after_margin
+msgid "Amount After Margin"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__amount_final
+msgid "Amount Final"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__amount_good
+msgid "Amount Good"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__amount_service
+msgid "Amount Service"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__amount_total
+msgid "Amount Total"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__amount_total_after_formula
+msgid "Amount Total After Formula"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_pricelist__approval_template_id
+msgid "Approval Configuration"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__approval_template_id
+msgid "Approval Template"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__approval_ids
+msgid "Approvals"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_pricelist__approve_ok
+msgid ""
+"Approve policy\n"
+"\n"
+"* If active user can see and execute 'Approve' button"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__approved
+msgid "Approved"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__message_attachment_count
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__message_attachment_count
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model,name:ssi_bill_of_service.model_bill_of_service
+#: model:res.groups,name:ssi_bill_of_service.bill_of_service_group
+msgid "Bill Of Service"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model,name:ssi_bill_of_service.model_bill_of_service_type
+#: model:res.groups,name:ssi_bill_of_service.bill_of_service_type_group
+msgid "Bill Of Service Type"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.actions.act_window,name:ssi_bill_of_service.bill_of_service_type_action
+msgid "Bill Of Service Types"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.actions.act_window,name:ssi_bill_of_service.bill_of_service_action
+msgid "Bill Of Services"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__bos_id
+#: model:ir.ui.menu,name:ssi_bill_of_service.menu_bos_root
+msgid "Bill of Service"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model_terms:ir.ui.view,arch_db:ssi_bill_of_service.bill_of_service_view_form
+msgid "Bill of Service Structure"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model,name:ssi_bill_of_service.model_bill_of_service_pricelist
+msgid "Bill of Service To Pricelist"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.module.category,name:ssi_bill_of_service.bill_of_service_pricelist_data_ownership_module_category
+msgid "Bill of Service To Pricelist - Data Ownership"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.module.category,name:ssi_bill_of_service.bill_of_service_pricelist_workflow_module_category
+msgid "Bill of Service To Pricelist - Workflow"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.actions.act_window,name:ssi_bill_of_service.bill_of_service_pricelist_action
+#: model:ir.ui.menu,name:ssi_bill_of_service.bill_of_service_pricelist_menu
+msgid "Bill of Service To Pricelists"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_type__code
+msgid "Bill of Service Type's code. Duplicate not allowed"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_type__name
+msgid "Bill of Service Type's name"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.ui.menu,name:ssi_bill_of_service.bill_of_service_type_menu
+msgid "Bill of Service Types"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service__code
+msgid "Bill of Service's code. Duplicate not allowed"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service__name
+msgid "Bill of Service's name"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_product_product__bos_ids
+#: model:ir.ui.menu,name:ssi_bill_of_service.bill_of_service_menu
+msgid "Bill of Services"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__approve_ok
+msgid "Can Approve"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__cancel_ok
+msgid "Can Cancel"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__confirm_ok
+msgid "Can Confirm"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__done_ok
+msgid "Can Finished"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__manual_number_ok
+msgid "Can Input Manual Document Number"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__reject_ok
+msgid "Can Reject"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__restart_ok
+msgid "Can Restart"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__restart_approval_ok
+msgid "Can Restart Approval"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__cancel_reason_id
+msgid "Cancel Reason"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_pricelist__cancel_ok
+msgid ""
+"Cancel policy\n"
+"\n"
+"* If active user can see and execute 'Cancel' button"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields.selection,name:ssi_bill_of_service.selection__bill_of_service_pricelist__state__cancel
+msgid "Cancelled"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__child_ids
+msgid "Child BoS"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model_terms:ir.ui.view,arch_db:ssi_bill_of_service.bill_of_service_view_form
+msgid "Childs"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__code
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__code
+msgid "Code"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__company_id
+#: model:res.groups,name:ssi_bill_of_service.bill_of_service_pricelist_company_group
+msgid "Company"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__company_partner_id
+msgid "Company Partner"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:res.groups,name:ssi_bill_of_service.bill_of_service_pricelist_company_child_group
+msgid "Company and All Child Companies"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_pricelist__company_id
+msgid ""
+"Company that own the document\n"
+"\n"
+"* Automatically filled with user's company.\n"
+"  Default company can be changed"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__component_ids
+msgid "Component Bill of Service"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model_terms:ir.ui.view,arch_db:ssi_bill_of_service.bill_of_service_view_form
+msgid "Components"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_pricelist__confirm_ok
+msgid ""
+"Confirm policy\n"
+"\n"
+"* If active user can see and execute 'Confirm' button"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__create_uid
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__create_uid
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__create_date
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__create_date
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__date
+msgid "Date"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__date_end
+msgid "Date End"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__date_start
+msgid "Date Start"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_product_product__bos_id
+msgid "Default BoS"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__display_name
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__display_name
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__display_name
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_product_product__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields.selection,name:ssi_bill_of_service.selection__bill_of_service_pricelist__state__done
+msgid "Done"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_pricelist__done_ok
+msgid ""
+"Done policy\n"
+"\n"
+"* If active user can see and execute 'Done' button"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields.selection,name:ssi_bill_of_service.selection__bill_of_service_pricelist__state__draft
+msgid "Draft"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__message_follower_ids
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__message_follower_ids
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__message_channel_ids
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__message_channel_ids
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__message_channel_ids
+msgid "Followers (Channels)"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__message_partner_ids
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__message_partner_ids
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service__activity_type_icon
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_pricelist__activity_type_icon
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_type__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model_terms:ir.ui.view,arch_db:ssi_bill_of_service.bill_of_service_pricelist_view_form
+msgid "Goods"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__id
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__id
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__id
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_product_product__id
+msgid "ID"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__activity_exception_icon
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__activity_exception_icon
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service__activity_exception_icon
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_pricelist__activity_exception_icon
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_type__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service__message_needaction
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service__message_unread
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_pricelist__message_needaction
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_pricelist__message_unread
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_type__message_needaction
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_type__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service__message_has_error
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_pricelist__message_has_error
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_type__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__message_is_follower
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__message_is_follower
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service____last_update
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist____last_update
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type____last_update
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_product_product____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__write_uid
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__write_uid
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__write_date
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__write_date
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__message_main_attachment_id
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__message_main_attachment_id
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_pricelist__manual_number_ok
+msgid ""
+"Manual number assignment policy\n"
+"\n"
+"* If active user can edit document number"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__margin
+msgid "Margin"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service__active
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_type__active
+msgid ""
+"Master data status\n"
+"\n"
+"* Inactive data can not be selected when creating new transaction\n"
+"* Transaction with inactive master data can still be viewed\n"
+"* Set master data as inactive if master data no longger needed,\n"
+"but master data already used on transaction"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__message_has_error
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__message_has_error
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__message_ids
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__message_ids
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__my_activity_date_deadline
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__my_activity_date_deadline
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__name
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__name
+msgid "Name"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__need_validation
+msgid "Need Validation"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__activity_date_deadline
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__activity_date_deadline
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__activity_summary
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__activity_summary
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__activity_type_id
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__activity_type_id
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__next_approval_ids
+msgid "Next Approvals"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__note
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__note
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__note
+msgid "Note"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__message_needaction_counter
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__message_needaction_counter
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__message_has_error_counter
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__message_has_error_counter
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service__message_needaction_counter
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_pricelist__message_needaction_counter
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_type__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service__message_has_error_counter
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_pricelist__message_has_error_counter
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_type__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service__message_unread_counter
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_pricelist__message_unread_counter
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_type__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model_terms:ir.ui.view,arch_db:ssi_bill_of_service.bill_of_service_view_search
+msgid "Parent"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__parent_id
+msgid "Parent BoS"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__policy_template_id
+msgid "Policy Template"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__price_round
+msgid "Price Round"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model,name:ssi_bill_of_service.model_product_product
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__product_id
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__product_id
+#: model_terms:ir.ui.view,arch_db:ssi_bill_of_service.bill_of_service_pricelist_view_search
+#: model_terms:ir.ui.view,arch_db:ssi_bill_of_service.bill_of_service_view_search
+msgid "Product"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__product_category_id
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__product_category_id
+#: model_terms:ir.ui.view,arch_db:ssi_bill_of_service.bill_of_service_pricelist_view_search
+#: model_terms:ir.ui.view,arch_db:ssi_bill_of_service.bill_of_service_view_search
+msgid "Product Category"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__product_qty
+msgid "Product Qty"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__product_tmpl_id
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__product_tmpl_id
+#: model_terms:ir.ui.view,arch_db:ssi_bill_of_service.bill_of_service_pricelist_view_search
+#: model_terms:ir.ui.view,arch_db:ssi_bill_of_service.bill_of_service_view_search
+msgid "Product Template"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model_terms:ir.ui.view,arch_db:ssi_bill_of_service.bill_of_service_view_form
+msgid "Products"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_pricelist__reject_ok
+msgid ""
+"Reject policy\n"
+"\n"
+"* If active user can see and execute 'Reject' button"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__rejected
+#: model:ir.model.fields.selection,name:ssi_bill_of_service.selection__bill_of_service_pricelist__state__reject
+msgid "Rejected"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__user_id
+msgid "Responsible"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__activity_user_id
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__activity_user_id
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_pricelist__restart_approval_ok
+msgid ""
+"Restart approval policy\n"
+"\n"
+"* If active user can see and execute 'Restart Approval' button"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_pricelist__restart_ok
+msgid ""
+"Restart policy\n"
+"\n"
+"* If active user can see and execute 'Restart' button"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__reviewer_id
+msgid "Reviewer"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service__product_category_id
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_pricelist__product_category_id
+msgid "Select category for the current product"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model_terms:ir.ui.view,arch_db:ssi_bill_of_service.bill_of_service_pricelist_view_form
+#: model_terms:ir.ui.view,arch_db:ssi_bill_of_service.bill_of_service_view_form
+msgid "Services"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__python_code
+#: model_terms:ir.ui.view,arch_db:ssi_bill_of_service.bill_of_service_pricelist_view_form
+msgid "Special Formula"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__state
+msgid "State"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service__activity_state
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_pricelist__activity_state
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_type__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__pricelist_id
+msgid "Target Pricelist"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__pricelist_item_id
+msgid "Target Pricelist Item"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_pricelist__name
+msgid ""
+"Transaction/document number\n"
+"\n"
+"* Unique indentifer of transaction\n"
+"* Leave '/' to automatically generate number\n"
+"* Change '/' into any number/identifier to manually assign number.\n"
+"  Manual number assignment can be done in 'Draft' state\n"
+"  Only user with 'Can Manualy Assign Number' policy can manually assign number.\n"
+"* Transaction with number other than '/' can not be deleted."
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__type_id
+msgid "Type"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service__activity_exception_decoration
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_pricelist__activity_exception_decoration
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_type__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__message_unread
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__message_unread
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__message_unread_counter
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__message_unread_counter
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__product_uom_id
+msgid "UoM"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:res.groups,name:ssi_bill_of_service.bill_of_service_pricelist_user_group
+msgid "User"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_pricelist__user_id
+msgid ""
+"User that responsible for document\n"
+"\n"
+"* Create user can be different with responsible user\n"
+"* Automatically filled with user that initiate document creation.\n"
+"  Default responsible can be changed."
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_pricelist__reviewer_id
+msgid ""
+"User that responsible to review document\n"
+"\n"
+"* Unless it configured to approve reviewer does not equal to approver"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_pricelist__active_approver_user_ids
+msgid "Users that can approve/reject document"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:res.groups,name:ssi_bill_of_service.bill_of_service_pricelist_validator_group
+msgid "Validator"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:res.groups,name:ssi_bill_of_service.bill_of_service_pricelist_viewer_group
+msgid "Viewer"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields.selection,name:ssi_bill_of_service.selection__bill_of_service_pricelist__state__confirm
+msgid "Waiting for Approval"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__website_message_ids
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__website_message_ids
+#: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service__website_message_ids
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_pricelist__website_message_ids
+#: model:ir.model.fields,help:ssi_bill_of_service.field_bill_of_service_type__website_message_ids
+msgid "Website communication history"
+msgstr ""
