@@ -4,7 +4,7 @@
 
 {
     "name": "Bill of Service",
-    "version": "14.0.3.0.2",
+    "version": "14.0.3.1.0",
     "website": "https://simetri-sinergi.id",
     "author": "PT. Simetri Sinergi Indonesia, OpenSynergy Indonesia",
     "license": "AGPL-3",
