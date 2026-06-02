@@ -1,0 +1,217 @@
+scenarios:
+  - name: "Bill of Service - Create"
+    steps:
+      - step: "Setup - create bill of service type"
+        action: "create"
+        model: "bill_of_service_type"
+        save_as: "bos_type"
+        values:
+          name: "Test BoS Type for BoS"
+          code: "TBOSTB"
+      - step: "Get UoM Unit"
+        action: "ref"
+        xml_id: "uom.product_uom_unit"
+        save_as: "uom_unit"
+      - step: "Create bill of service"
+        action: "create"
+        model: "bill_of_service"
+        save_as: "bos"
+        values:
+          name: "Test Bill of Service"
+          code: "TBOS001"
+          type_id: "EVAL: registry['bos_type'].id"
+          product_qty: 1.0
+          product_uom_id: "EVAL: registry['uom_unit'].id"
+      - step: "Assert BoS created"
+        action: "assert"
+        target: "bos"
+        asserts:
+          id:
+            type: "value"
+            operator: "is_truthy"
+          name:
+            type: "value"
+            expected: "Test Bill of Service"
+          code:
+            type: "value"
+            expected: "TBOS001"
+          product_qty:
+            type: "value"
+            expected: 1.0
+
+  - name: "Bill of Service - Edit"
+    steps:
+      - step: "Setup - create bill of service type"
+        action: "create"
+        model: "bill_of_service_type"
+        save_as: "bos_type"
+        values:
+          name: "Edit BoS Type"
+          code: "EBOST"
+      - step: "Get UoM Unit"
+        action: "ref"
+        xml_id: "uom.product_uom_unit"
+        save_as: "uom_unit"
+      - step: "Create bill of service"
+        action: "create"
+        model: "bill_of_service"
+        save_as: "bos"
+        values:
+          name: "BoS To Edit"
+          code: "BOSE001"
+          type_id: "EVAL: registry['bos_type'].id"
+          product_qty: 1.0
+          product_uom_id: "EVAL: registry['uom_unit'].id"
+      - step: "Write new name"
+        action: "write"
+        target: "bos"
+        values:
+          name: "Updated Bill of Service"
+          product_qty: 2.0
+      - step: "Assert updated"
+        action: "assert"
+        target: "bos"
+        asserts:
+          name:
+            type: "value"
+            expected: "Updated Bill of Service"
+          product_qty:
+            type: "value"
+            expected: 2.0
+
+  - name: "Bill of Service - Delete"
+    steps:
+      - step: "Setup - create bill of service type"
+        action: "create"
+        model: "bill_of_service_type"
+        save_as: "bos_type"
+        values:
+          name: "Delete BoS Type"
+          code: "DBOST"
+      - step: "Get UoM Unit"
+        action: "ref"
+        xml_id: "uom.product_uom_unit"
+        save_as: "uom_unit"
+      - step: "Create bill of service"
+        action: "create"
+        model: "bill_of_service"
+        save_as: "bos"
+        values:
+          name: "BoS To Delete"
+          code: "BOSD001"
+          type_id: "EVAL: registry['bos_type'].id"
+          product_qty: 1.0
+          product_uom_id: "EVAL: registry['uom_unit'].id"
+      - step: "Delete bill of service"
+        action: "call"
+        target: "bos"
+        method: "unlink"
+      - step: "Verify deleted"
+        action: "search"
+        model: "bill_of_service"
+        domain:
+          - ["code", "=", "BOSD001"]
+        save_as: "result"
+        expect_count: 0
+
+  - name: "Bill of Service - Parent Child Structure"
+    steps:
+      - step: "Setup - create bill of service type"
+        action: "create"
+        model: "bill_of_service_type"
+        save_as: "bos_type"
+        values:
+          name: "Parent Child BoS Type"
+          code: "PCBOST"
+      - step: "Get UoM Unit"
+        action: "ref"
+        xml_id: "uom.product_uom_unit"
+        save_as: "uom_unit"
+      - step: "Create parent bill of service"
+        action: "create"
+        model: "bill_of_service"
+        save_as: "parent_bos"
+        values:
+          name: "Parent BoS"
+          code: "PBOS001"
+          type_id: "EVAL: registry['bos_type'].id"
+          product_qty: 1.0
+          product_uom_id: "EVAL: registry['uom_unit'].id"
+      - step: "Create child bill of service"
+        action: "create"
+        model: "bill_of_service"
+        save_as: "child_bos"
+        values:
+          name: "Child BoS"
+          code: "CBOS001"
+          type_id: "EVAL: registry['bos_type'].id"
+          product_qty: 1.0
+          product_uom_id: "EVAL: registry['uom_unit'].id"
+          parent_id: "EVAL: registry['parent_bos'].id"
+      - step: "Assert child has parent"
+        action: "assert"
+        target: "child_bos"
+        asserts:
+          parent_id:
+            type: "value"
+            operator: "is_truthy"
+      - step: "Invalidate cache to recompute all_structure_ids"
+        action: "call"
+        target: "child_bos"
+        method: "invalidate_cache"
+      - step: "Assert all_structure_ids is set on child"
+        action: "assert"
+        target: "child_bos"
+        asserts:
+          all_structure_ids:
+            type: "o2m"
+            check: "count"
+            expected_count: 1
+
+  - name: "Bill of Service - Component Structure"
+    steps:
+      - step: "Setup - create bill of service type"
+        action: "create"
+        model: "bill_of_service_type"
+        save_as: "bos_type"
+        values:
+          name: "Component BoS Type"
+          code: "COMPBOST"
+      - step: "Get UoM Unit"
+        action: "ref"
+        xml_id: "uom.product_uom_unit"
+        save_as: "uom_unit"
+      - step: "Create component bill of service"
+        action: "create"
+        model: "bill_of_service"
+        save_as: "component_bos"
+        values:
+          name: "Component BoS"
+          code: "COMPBOS001"
+          type_id: "EVAL: registry['bos_type'].id"
+          product_qty: 1.0
+          product_uom_id: "EVAL: registry['uom_unit'].id"
+      - step: "Create main bill of service with component"
+        action: "create"
+        model: "bill_of_service"
+        save_as: "main_bos"
+        values:
+          name: "Main BoS"
+          code: "MAINBOS001"
+          type_id: "EVAL: registry['bos_type'].id"
+          product_qty: 1.0
+          product_uom_id: "EVAL: registry['uom_unit'].id"
+          component_ids:
+            - "EVAL: registry['component_bos'].id"
+      - step: "Invalidate cache to recompute all_component_ids"
+        action: "call"
+        target: "main_bos"
+        method: "invalidate_cache"
+      - step: "Assert component is included in all_component_ids"
+        action: "assert"
+        target: "main_bos"
+        asserts:
+          all_component_ids:
+            type: "o2m"
+            check: "count"
+            expected_count: 2

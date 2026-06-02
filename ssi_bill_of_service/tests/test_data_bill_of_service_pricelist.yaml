@@ -1,0 +1,72 @@
+scenarios:
+  - name: "Bill of Service Pricelist - Compute Amount Fields Are Zero by Default"
+    steps:
+      - step: "Setup - create BoS type"
+        action: "create"
+        model: "bill_of_service_type"
+        save_as: "bos_type"
+        values:
+          name: "Pricelist Compute BoS Type"
+          code: "PLCBOST"
+      - step: "Get UoM Unit"
+        action: "ref"
+        xml_id: "uom.product_uom_unit"
+        save_as: "uom_unit"
+      - step: "Setup - create bill of service"
+        action: "create"
+        model: "bill_of_service"
+        save_as: "bos"
+        values:
+          name: "BoS For Amount Check"
+          code: "BOSAMT"
+          type_id: "EVAL: registry['bos_type'].id"
+          product_qty: 1.0
+          product_uom_id: "EVAL: registry['uom_unit'].id"
+      - step: "Get IDR currency"
+        action: "ref"
+        xml_id: "base.IDR"
+        save_as: "currency"
+      - step: "Setup - create pricelist"
+        action: "create"
+        model: "product.pricelist"
+        save_as: "pricelist"
+        values:
+          name: "Amount Check Pricelist"
+          currency_id: "EVAL: registry['currency'].id"
+      - step: "Setup - create task pricelist"
+        action: "create"
+        model: "product.pricelist"
+        save_as: "task_pricelist"
+        values:
+          name: "Amount Check Task Pricelist"
+          currency_id: "EVAL: registry['currency'].id"
+      - step: "Create pricelist record"
+        action: "create"
+        model: "bill_of_service_pricelist"
+        save_as: "pricelist_record"
+        as_user: "base.user_admin"
+        values:
+          date: 2024-01-01
+          bos_id: "EVAL: registry['bos'].id"
+          currency_id: "EVAL: registry['currency'].id"
+          pricelist_id: "EVAL: registry['pricelist'].id"
+          task_pricelist_id: "EVAL: registry['task_pricelist'].id"
+          margin: 10.0
+          price_round: 0.0
+          python_code: "result = document.amount_total"
+      - step: "Assert amounts are zero (no goods or services)"
+        action: "assert"
+        target: "pricelist_record"
+        asserts:
+          state:
+            type: "value"
+            expected: "draft"
+          amount_good:
+            type: "value"
+            expected: 0.0
+          amount_service:
+            type: "value"
+            expected: 0.0
+          amount_total:
+            type: "value"
+            expected: 0.0
