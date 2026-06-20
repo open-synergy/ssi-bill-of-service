@@ -482,6 +482,16 @@ msgid "Goods"
 msgstr ""
 
 #. module: ssi_bill_of_service
+#: model_terms:ir.ui.view,arch_db:ssi_bill_of_service.bill_of_service_type_view_search
+msgid "Has Product Category"
+msgstr ""
+
+#. module: ssi_bill_of_service
+#: model_terms:ir.ui.view,arch_db:ssi_bill_of_service.bill_of_service_type_view_search
+msgid "Has Product Template"
+msgstr ""
+
+#. module: ssi_bill_of_service
 #: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service__id
 #: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_pricelist__id
 #: model:ir.model.fields,field_description:ssi_bill_of_service.field_bill_of_service_type__id
