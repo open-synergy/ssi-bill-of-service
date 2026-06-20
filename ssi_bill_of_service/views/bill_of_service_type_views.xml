@@ -22,7 +22,22 @@
         />
     <field name="mode">primary</field>
     <field name="arch" type="xml">
-        <data />
+        <data>
+            <xpath expr="//field[@name='code']" position="after">
+                <field name="allowed_product_category_ids" />
+                <field name="allowed_product_tmpl_ids" />
+                <filter
+                        name="dom_has_product_category"
+                        string="Has Product Category"
+                        domain="[('allowed_product_category_ids', '!=', False)]"
+                    />
+                <filter
+                        name="dom_has_product_template"
+                        string="Has Product Template"
+                        domain="[('allowed_product_tmpl_ids', '!=', False)]"
+                    />
+            </xpath>
+        </data>
     </field>
 </record>
 
