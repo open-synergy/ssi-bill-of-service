@@ -1,0 +1,162 @@
+scenarios:
+  - name: "Create Bill of Service Pricelist with Operating Unit"
+    steps:
+      - step: "Create bill of service type"
+        action: "create"
+        model: "bill_of_service_type"
+        save_as: "bos_type"
+        values:
+          name: "Test BoS Type OU 1"
+          code: "TESTBOSTYPEOU1"
+
+      - step: "Get UoM Unit"
+        action: "ref"
+        xml_id: "uom.product_uom_unit"
+        save_as: "uom_unit"
+
+      - step: "Create bill of service"
+        action: "create"
+        model: "bill_of_service"
+        save_as: "bos"
+        values:
+          name: "Test BoS OU 1"
+          code: "TESTBOSOU1"
+          type_id: "REC: bos_type.id"
+          product_qty: 1.0
+          product_uom_id: "REC: uom_unit.id"
+
+      - step: "Get IDR currency"
+        action: "ref"
+        xml_id: "base.IDR"
+        save_as: "currency"
+
+      - step: "Create pricelist"
+        action: "create"
+        model: "product.pricelist"
+        save_as: "pricelist"
+        values:
+          name: "Test Pricelist OU 1"
+          currency_id: "REC: currency.id"
+
+      - step: "Create bill_of_service_pricelist with operating_unit_id"
+        action: "create"
+        model: "bill_of_service_pricelist"
+        save_as: "record"
+        as_user: "base.user_admin"
+        values:
+          date: 2024-01-01
+          bos_id: "REC: bos.id"
+          currency_id: "REC: currency.id"
+          pricelist_id: "REC: pricelist.id"
+          margin: 10.0
+          price_round: 0.0
+          python_code: "result = document.amount_total"
+          operating_unit_id: "REF: operating_unit.main_operating_unit"
+
+      - step: "Assert operating_unit_id is set"
+        action: "assert"
+        target: "record"
+        asserts:
+          operating_unit_id:
+            type: "value"
+            operator: "is_truthy"
+
+  - name: "User without operating unit access cannot read or write"
+    steps:
+      - step: "Create bill of service type"
+        action: "create"
+        model: "bill_of_service_type"
+        save_as: "bos_type"
+        values:
+          name: "Test BoS Type OU 2"
+          code: "TESTBOSTYPEOU2"
+
+      - step: "Get UoM Unit"
+        action: "ref"
+        xml_id: "uom.product_uom_unit"
+        save_as: "uom_unit"
+
+      - step: "Create bill of service"
+        action: "create"
+        model: "bill_of_service"
+        save_as: "bos"
+        values:
+          name: "Test BoS OU 2"
+          code: "TESTBOSOU2"
+          type_id: "REC: bos_type.id"
+          product_qty: 1.0
+          product_uom_id: "REC: uom_unit.id"
+
+      - step: "Get IDR currency"
+        action: "ref"
+        xml_id: "base.IDR"
+        save_as: "currency"
+
+      - step: "Create pricelist"
+        action: "create"
+        model: "product.pricelist"
+        save_as: "pricelist"
+        values:
+          name: "Test Pricelist OU 2"
+          currency_id: "REC: currency.id"
+
+      - step: "Create restricted operating unit"
+        action: "create"
+        model: "operating.unit"
+        save_as: "ou_restricted"
+        values:
+          name: "OU Restricted Test BoS"
+          code: "OURESTRICTEDTESTBOS"
+          partner_id: "REC: company.partner_id.id"
+
+      - step: "Create user without access to main operating unit"
+        action: "create"
+        model: "res.users"
+        save_as: "restricted_user"
+        values:
+          name: "Restricted OU User BoS"
+          login: "restricted_ou_user_bos@example.com"
+          groups_id:
+            - - 6
+              - 0
+              - - "REF: base.group_user"
+                - "REF: ssi_bill_of_service.bill_of_service_pricelist_user_group"
+                - "REF: ssi_bill_of_service_operating_unit.bill_of_service_pricelist_ou_group"
+          assigned_operating_unit_ids:
+            - - 6
+              - 0
+              - - "REC: ou_restricted.id"
+
+      - step: "Create bill_of_service_pricelist with main operating unit"
+        action: "create"
+        model: "bill_of_service_pricelist"
+        save_as: "record"
+        as_user: "base.user_admin"
+        values:
+          date: 2024-01-01
+          bos_id: "REC: bos.id"
+          currency_id: "REC: currency.id"
+          pricelist_id: "REC: pricelist.id"
+          margin: 10.0
+          price_round: 0.0
+          python_code: "result = document.amount_total"
+          operating_unit_id: "REF: operating_unit.main_operating_unit"
+
+      - step: "Restricted user cannot read the record"
+        action: "call"
+        target: "record"
+        method: "read"
+        args:
+          - - "date"
+        as_user: "restricted_user"
+        expect_error:
+          type: "AccessError"
+
+      - step: "Restricted user cannot write the record"
+        action: "write"
+        target: "record"
+        as_user: "restricted_user"
+        expect_error:
+          type: "AccessError"
+        values:
+          margin: 20.0
