@@ -19,6 +19,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [ssi_bill_of_service](ssi_bill_of_service/) | 14.0.3.2.0 |  | Bill of Service
+[ssi_bill_of_service_operating_unit](ssi_bill_of_service_operating_unit/) | 14.0.1.0.0 |  | Bill of Service To Pricelist + Operating Unit
 [ssi_bill_of_service_project](ssi_bill_of_service_project/) | 14.0.2.3.0 |  | Bill of Service - Project Integration
 [ssi_bill_of_service_work_log](ssi_bill_of_service_work_log/) | 14.0.1.1.0 |  | Bill of Service - Work Log Integration
 
