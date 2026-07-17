@@ -8,7 +8,10 @@
 <record id="bill_of_service_pricelist_view_tree" model="ir.ui.view">
     <field name="name">bill_of_service_pricelist tree</field>
     <field name="model">bill_of_service_pricelist</field>
-    <field name="inherit_id" ref="ssi_bill_of_service.bill_of_service_pricelist_view_tree" />
+    <field
+            name="inherit_id"
+            ref="ssi_bill_of_service.bill_of_service_pricelist_view_tree"
+        />
     <field name="arch" type="xml">
         <data>
             <xpath expr="//field[@name='company_id']" position="after">
@@ -26,7 +29,10 @@
 <record id="bill_of_service_pricelist_view_search" model="ir.ui.view">
     <field name="name">bill_of_service_pricelist search</field>
     <field name="model">bill_of_service_pricelist</field>
-    <field name="inherit_id" ref="ssi_bill_of_service.bill_of_service_pricelist_view_search" />
+    <field
+            name="inherit_id"
+            ref="ssi_bill_of_service.bill_of_service_pricelist_view_search"
+        />
     <field name="arch" type="xml">
         <data>
             <xpath expr="//field[@name='company_id']" position="after">
@@ -51,7 +57,10 @@
 <record id="bill_of_service_pricelist_view_form" model="ir.ui.view">
     <field name="name">bill_of_service_pricelist form</field>
     <field name="model">bill_of_service_pricelist</field>
-    <field name="inherit_id" ref="ssi_bill_of_service.bill_of_service_pricelist_view_form" />
+    <field
+            name="inherit_id"
+            ref="ssi_bill_of_service.bill_of_service_pricelist_view_form"
+        />
     <field name="arch" type="xml">
         <data>
             <xpath expr="//field[@name='company_id']" position="after">
